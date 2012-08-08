@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 == Knowledge base
 
 This project is somewhat technical. Following skills might be needed:
@@ -13,3 +14,9 @@ This is a fairly straigthforward application.
 * I should be able to create, update and delete articles
 * I should be able to filter articles based on tags
 * I should be able to find an article with full text search
+=======
+knowledge
+=========
+
+This is project is about a knowledge base
+>>>>>>> 5588c4cbe00014de052cf92e0813e974547e8cd7
