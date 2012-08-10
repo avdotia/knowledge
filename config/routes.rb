@@ -1,6 +1,12 @@
 Knowledge::Application.routes.draw do
-  get "articles/new"
+############## comente el get articles new y puse el resources articles
+#  get "articles/new"
+resources :articles
+#get "articles/show"
 
+#match '/edit',  to: 'articles#edit'
+
+###############33
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

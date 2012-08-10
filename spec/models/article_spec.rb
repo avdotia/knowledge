@@ -24,4 +24,5 @@ describe Article do
     before { @article.title = "." * 51 }
     it { should_not be_valid }
   end
+  
 end
