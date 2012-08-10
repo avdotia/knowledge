@@ -20,9 +20,15 @@ describe "Article Pages" do
       it { should have_selector('h1',    text: "Update the article") }
       it { should have_selector('title', text: "Edit user") }      
     end
+
 #    describe "with invalid information" do
 #      before { click_button "Save changes" }
 #      it { should have_content('error') }
 #    end
   end  
+  describe "list articles" do
+    before { visit articles_path }
+    it { should have_selector('h1', text: "All Articles") }    
+  end
+
 end
