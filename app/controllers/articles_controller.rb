@@ -19,9 +19,14 @@ class ArticlesController < ApplicationController
     redirect_to article_path(@article)
   end  
   def create
-    @article = Article.create!(params[:article])    
-    flash[:notice] = "#{@article.title} was successfully created."
-    redirect_to article_path(@article)
+    @article = Article.new(params[:article])
+    if @article.save    
+      flash[:notice] = "#{@article.title} was successfully created."
+      redirect_to article_path(@article)
+    else
+      flash[:error] = "There were errors saving the article."
+      render :new
+    end
   end
   def destroy
     @article = Article.find(params[:id])
