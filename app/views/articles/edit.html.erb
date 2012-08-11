@@ -1,19 +1,8 @@
 <% provide(:title, "Edit user") %>
 <h1>Update the article</h1>
-<title><%= yield(:title) %></title>
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@article) do |f| %>
-      
-
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-
-      <%= f.label :content %>
-      <%= f.text_field :content %>
-
-    <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <%= render 'form' %>
  </div>
 </div>
