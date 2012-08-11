@@ -7,6 +7,7 @@ describe "Article Pages" do
     before { visit article_path(article) }
     it { should have_selector('h1', text: article.title) }
     it { should have_selector('title', text: "Hola") }
+    
   end
   describe "add article" do
     let(:article) { FactoryGirl.create(:article) }

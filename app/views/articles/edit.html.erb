@@ -4,6 +4,7 @@
 <div class="row">
   <div class="span6 offset3">
     <%= render 'form' %>
-    <%= button_to 'Delete', articles_path(@article), :method => :delete, :confirm => 'Are you sure?' %>
+    <%= link_to "Back to article", article_path %>
+    <%= button_to 'Delete', @article, :method => :delete, :confirm => 'Are you sure?' %>
  </div>
 </div>
