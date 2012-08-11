@@ -19,9 +19,14 @@ class ArticlesController < ApplicationController
     redirect_to article_path(@article)
   end  
   def create
-    @article = Article.create!(params[:article])
-    
+    @article = Article.create!(params[:article])    
     flash[:notice] = "#{@article.title} was successfully created."
     redirect_to article_path(@article)
+  end
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    flash[:notice] = "#{@article.title} was succesfully deleted."
+    redirect_to articles_url
   end
 end
