@@ -14,9 +14,13 @@ class ArticlesController < ApplicationController
   end  
   def update
     @article = Article.find params[:id]
-    @article.update_attributes!(params[:article])    
-    flash[:notice] = "#{@article.title} was successfully updated."
-    redirect_to article_path(@article)
+    if @article.update_attributes(params[:article])    
+      flash[:notice] = "#{@article.title} was successfully updated."
+      redirect_to article_path(@article)
+    else
+      flash[:error] = "There were errors saving the article."
+      render :edit
+    end
   end  
   def create
     @article = Article.new(params[:article])
