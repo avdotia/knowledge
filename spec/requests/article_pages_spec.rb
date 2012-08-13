@@ -29,7 +29,7 @@ describe "Article Pages" do
         it "should fail if #{field} field is missing" do
             fill_in "article_#{field}", with: ""
             click_button "Update Article"
-            response.should have_selector('div#flash-error', text: 'There were errors saving the article.')
+            should have_selector('div#flash-error', text: 'There were errors saving the article.')
      #     vemos mensaje de error           
             
         end
