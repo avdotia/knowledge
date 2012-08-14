@@ -1,7 +1,8 @@
 <% provide(:title, 'Index') %>
 <h1> All Articles </h1>
+<%= will_paginate %>
 
-<table>#articles
+<table>
   <thead>
     <tr>
       <th> Article Title </th>
@@ -9,17 +10,22 @@
       <th> More Info </th>
     </tr>
   </thead>
-  <tbody>
+
+  <tbody>  
+    <li>
+    <%= link_to 'Add new article', new_article_path %>          
     <% @articles.each do |article| %>
       <tr>
-	<td>
-	  <%= link_to article.title, article_path(article) %>
-	</td>
-	<td>
-	  <%= article.title %>
-	</td>
+	     <td>
+	       <%= link_to article.title, article_path(article) %>
+    	 </td>
+	     <td>
+	       <%= article.title %>
+	     </td>
       </tr>
-      <% end %>
-  </tbody>
+    <% end %>
+  </tbody>  
 </table>
-<%= link_to 'Add new article', new_article_path %>
+
+<%= will_paginate %>
+

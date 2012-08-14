@@ -10,12 +10,10 @@ describe "Article Pages" do
     it { should have_selector('p', text: article.content) }
     it { should have_link('Edit', href: edit_article_path(article)) }
     it { should have_link('Back to list', href: articles_path) }
-    ##test button delete??
     it { should have_button 'Delete' }      
   end
   
   describe "add new article" do
-   # let(:article) { FactoryGirl.create(:article) }
     before { visit new_article_path }
     describe "page" do
       it { should have_selector('h1', text: "Create a new article") }
@@ -39,9 +37,7 @@ describe "Article Pages" do
         fill_in "article_content", with: new_content
         click_button "Create Article"
       end
-      ##parece que funciona sin el text
-      it { should have_selector('div#flash-notice') }   
-      ##Creo que specify no va    
+      it { should have_selector('div#flash-notice', text: "#{new_title} was successfully created.") }   
     end    
   end
   
@@ -52,7 +48,6 @@ describe "Article Pages" do
       it { should have_selector('h1',    text: "Update the article") }
       it { should have_selector('title', text: "Edit user") }
       it { should have_link('Back to article', href: article_path(article)) } 
-      ##test delete?
       it { should have_button 'Delete' }       
     end
     describe "with invalid information" do
@@ -72,27 +67,34 @@ describe "Article Pages" do
         fill_in "article_content", with: new_content
         click_button "Update Article"
       end
-      it {should have_selector('div#flash-notice')}
+      it {should have_selector('div#flash-notice', text: "#{new_title} was successfully updated.")}
       specify { article.reload.title.should == new_title }
       specify { article.reload.content.should == new_content }           
     end
   end  
   
   describe "list articles" do
+    it "has at least an article" do
+      @article = FactoryGirl.create(:article)
+      visit articles_path
+      should have_link(@article.title, href: article_path(@article)) 
+    end
     before { visit articles_path }
+    let(:article) { FactoryGirl.create(:article) }
     describe "page" do
       it { should have_link('Add new article', href: new_article_path) } 
       it { should have_selector('h1', text: "All Articles") }  
-      it { should have_selector('title', text: "Index") }  
-   # it { should have_link(href: article_path) }
+      it { should have_selector('title', text: "Index") }       
     end
-    let(:article) { FactoryGirl.create(:article) }
-    before(:all) { 30.times { FactoryGirl.create(:article) } }
-    after(:all) { Article.delete_all }
     describe "pagination" do
-      
+      before(:all) { 30.times { FactoryGirl.create(:article) } }
+      after(:all) { Article.delete_all }
+      it { should have_selector('li') }
+      it "should list each article" do
+        Article.paginate(page: 1).each do |article|
+          page.should have_selector("li", text: article.title)
+        end
+      end
     end
-
   end
-
 end
