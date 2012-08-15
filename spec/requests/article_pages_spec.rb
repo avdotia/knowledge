@@ -96,5 +96,20 @@ describe "Article Pages" do
         end
       end
     end
+##########PARA CREACION
+#    describe "article release associations" do
+
+#      before { @article.save }
+#      let!(:older_article) do 
+#        FactoryGirl.create(:article, created_at: 1.day.ago)
+#      end
+#      let!(:newer_article) do
+#        FactoryGirl.create(:article, created_at: 1.hour.ago)
+#      end
+  
+#      it "should have the right articles in the right order" do
+#        article.should == [newer_article, older_article]
+#      end
+#    end
   end
 end

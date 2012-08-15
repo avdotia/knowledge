@@ -8,6 +8,7 @@
 </ul>
 <h3> Description:</h3>
 <p><%= @article.content%></p>
+Posted <%= time_ago_in_words(@article.created_at) %> ago.
 <%= link_to "Edit", edit_article_path(@article) %>
 <%= link_to "Back to list", articles_path %>
 <%= button_to 'Delete', @article, :method => :delete, :data => { :confirm => 'Are you sure?' } %>

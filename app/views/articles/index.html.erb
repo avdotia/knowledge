@@ -5,7 +5,9 @@
 <table>
   <thead>
     <tr>
+      <th> <%=  index_table_header 'ID', :id, @id, @direction %> </th>    
       <th> <%=  index_table_header 'Article Title', :title, @title, @direction %> </th>
+
       <th> Release Date </th>
       <th> More Info </th>
     </tr>
@@ -16,12 +18,16 @@
     <%= link_to 'Add new article', new_article_path %>          
     <% @articles.each do |article| %>
       <tr>
+       <td>
+         <%= link_to article.id, article_path(article) %>
+       </td>
 	     <td>
-	       <%= link_to article.title, article_path(article) %>
+	       <%= link_to article.title, article_path(article) %>	       
     	 </td>
-	     <td>
-	       <%= article.title %>
-	     </td>
+
+       <td>
+         <%= time_ago_in_words(article.created_at) %>
+       </td>	     
       </tr>
     <% end %>
   </tbody>  
