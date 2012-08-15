@@ -1,12 +1,7 @@
 class ArticlesController < ApplicationController
   def index
-   # @articles = Article.all
    @field = params[:order_by] || 'id'
-   if params[:direction].try(:upcase) == 'ASC'
-     @direction = 'ASC'
-   else
-     @direction = 'DESC'
-   end
+   @direction = params[:direction].try(:upcase) == 'ASC' ? 'ASC' : 'DESC'
    @articles = Article.paginate(page: params[:page], order: "#{@field} #{@direction}")
   end
   def new

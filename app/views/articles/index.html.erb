@@ -5,9 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th> <%=  index_table_header 'ID', :id, @id, @direction %> </th>    
-      <th> <%=  index_table_header 'Article Title', :title, @title, @direction %> </th>
-
+      <th> <%=  index_table_header 'ID', :id, @field, @direction %> </th>    
+      <th> <%=  index_table_header 'Article Title', :title, @field, @direction %> </th>
       <th> Release Date </th>
       <th> More Info </th>
     </tr>
@@ -24,7 +23,6 @@
 	     <td>
 	       <%= link_to article.title, article_path(article) %>	       
     	 </td>
-
        <td>
          <%= time_ago_in_words(article.created_at) %>
        </td>	     
