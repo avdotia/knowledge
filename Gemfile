@@ -5,6 +5,7 @@ gem 'jquery-rails', '2.0.2'
 gem 'simple_form'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
+gem 'RedCloth'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

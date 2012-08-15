@@ -3,8 +3,6 @@
 <%= render 'searcher' %>
 <%= link_to 'Add new article', new_article_path %>  
 <%= will_paginate %>
-
-
 <table>
   <thead>
     <tr>
@@ -14,11 +12,8 @@
       <th> More Info </th>
     </tr>
   </thead>
-
   <tbody>  
-    <li>
-    
-        
+    <li>        
     <% @articles.each do |article| %>
       <tr>
        <td>
@@ -32,6 +27,7 @@
        </td>	     
       </tr>
     <% end %>
+    </li>
   </tbody>  
 </table>
 

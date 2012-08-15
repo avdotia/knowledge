@@ -1,13 +1,13 @@
 <% provide(:title, 'Show') %>
-<h1><%= @article.title %></h1>
+
+<h1><%= raw RedCloth.new(@article.title).to_html %></h1>
 <title><%= yield(:title) %></title>
-<h2> Details about <%= @article.title %></h2>
+<h2> Details about <%= raw RedCloth.new(@article.title).to_html %></h2>
 <ul>
-	<li>Title: <%= @article.title%></li>
-	<li>Released on:?¿</li>
+	<li>Title: <%= raw RedCloth.new(@article.title).to_html %></li>
 </ul>
 <h3> Description:</h3>
-<p><%= @article.content%></p>
+<%= raw RedCloth.new(@article.content).to_html %>
 Posted <%= time_ago_in_words(@article.created_at) %> ago.
 <%= link_to "Edit", edit_article_path(@article) %>
 <%= link_to "Back to list", articles_path %>
