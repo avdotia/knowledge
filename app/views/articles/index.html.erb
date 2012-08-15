@@ -1,6 +1,9 @@
 <% provide(:title, 'Index') %>
 <h1> All Articles </h1>
+<%= render 'searcher' %>
+<%= link_to 'Add new article', new_article_path %>  
 <%= will_paginate %>
+
 
 <table>
   <thead>
@@ -14,7 +17,8 @@
 
   <tbody>  
     <li>
-    <%= link_to 'Add new article', new_article_path %>          
+    
+        
     <% @articles.each do |article| %>
       <tr>
        <td>

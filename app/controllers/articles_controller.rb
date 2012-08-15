@@ -2,7 +2,8 @@ class ArticlesController < ApplicationController
   def index
    @field = params[:order_by] || 'id'
    @direction = params[:direction].try(:upcase) == 'ASC' ? 'ASC' : 'DESC'
-   @articles = Article.paginate(page: params[:page], order: "#{@field} #{@direction}")
+   @articles = Article.paginate(page: params[:page], order: "#{@field} #{@direction}").search(params[:search])
+ #  @articles = Article.search(params[:search])
   end
   def new
     @article = Article.new
