@@ -1,0 +1,32 @@
+es:
+  articles:
+    title: "Título "
+    content: "Descripción "
+    released: "Enviado "
+    delete: "Borrar"
+    search: "Buscar"
+    show: 
+      title: "Ver artículo"
+      content: "Detalles"
+      back: "Volver a la lista"
+      edit: "Editar"
+    new:
+      title: "Artículo nuevo"
+      content: "Crear un nuevo artículo"
+      back: "Volver a la lista"
+    edit:
+      title: "Editar artículo"
+      content: "Actualizar el artículo"
+      back: "Volver al artículo"
+    index:
+      title: "Índice"
+      content: "Todos los artículos"
+      new: "Añadir un nuevo artículo"
+      id_table: "ID"
+      title_table: "Título del artículo"
+      release_table: "Fecha"
+      info_table: "Más información"    
+  success_update_flash: "El artículo fue actualizado correctamente."
+  success_destroy_flash: "El artículo fue borrado con éxito."
+  success_create_flash: "El artículo fue creado satisfactoriamente."
+  error_saving_flash: "Se produjeron errores guardando el artículo."

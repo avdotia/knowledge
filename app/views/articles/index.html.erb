@@ -1,15 +1,16 @@
-<% provide(:title, 'Index') %>
-<h1> All Articles </h1>
+<% provide(:title, t('articles.index.title')) %>
+
+<h1><%= t 'articles.index.content' %></h1>
 <%= render 'searcher' %>
-<%= link_to 'Add new article', new_article_path %>  
+<%= link_to t('articles.index.new'), new_article_path %>  
 <%= will_paginate %>
 <table>
   <thead>
     <tr>
-      <th> <%=  index_table_header 'ID', :id, @field, @direction %> </th>    
-      <th> <%=  index_table_header 'Article Title', :title, @field, @direction %> </th>
-      <th> Release Date </th>
-      <th> More Info </th>
+      <th> <%=  index_table_header t('articles.index.id_table'), :id, @field, @direction %> </th>    
+      <th> <%=  index_table_header t('articles.index.title_table'), :title, @field, @direction %> </th>
+      <th> <%=  index_table_header t('articles.index.release_table'), :title, @field, @direction %></th>
+      <th> <%= t('articles.index.info_table') %> </th>
     </tr>
   </thead>
   <tbody>  
@@ -25,6 +26,8 @@
        <td>
          <%= time_ago_in_words(article.created_at) %>
        </td>	     
+       <td>
+       </td>       
       </tr>
     <% end %>
     </li>

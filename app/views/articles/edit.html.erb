@@ -1,10 +1,11 @@
-<% provide(:title, "Edit user") %>
-<h1>Update the article</h1>
+<% provide(:title, t('articles.edit.title')) %>
+
+<h1><%= t 'articles.edit.content' %></h1>
 
 <div class="row">
   <div class="edit-form">
     <%= render 'form' %>
-    <%= link_to "Back to article", @article %>
-    <%= button_to 'Delete', @article, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+    <%= link_to t('articles.edit.back'), @article %>
+    <%= button_to t('articles.delete'), @article, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
  </div>
 </div>

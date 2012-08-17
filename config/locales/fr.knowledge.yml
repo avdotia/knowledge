@@ -1,0 +1,32 @@
+fr:
+  articles:
+    title: "Titre "
+    content: "Resumé "
+    released: "Envoyer "
+    delete: "Effacer"  
+    search: "Rechercher"  
+    show: 
+      title: "Montrer"
+      content: "Détails"  
+      back: "Retourner à la liste"
+      edit: "Éditer"
+    new:
+      title: "Nouvel article"
+      content: "Créer un nouvel article"
+      back: "Retourner à la liste"
+    edit:
+      title: "Éditer l'article"
+      content: "Modifier l'article"
+      back: "Retourner à l'article"
+    index:
+      title: "Index"
+      content: "Tous les articles"
+      new: "Créer un nouvel article"
+      id_table: "ID"
+      title_table: "Titre de l'article"
+      release_table: "Date"
+      info_table: "Plus d'information"
+  success_update_flash: "L'article est mis à jour."
+  success_destroy_flash:  "L'article a été supprimé avec succès."
+  success_create_flash: "L'article a été créé avec succès."
+  error_saving_flash: "Il y avait des erreurs d'épargne de l'article."

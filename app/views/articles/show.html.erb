@@ -1,17 +1,20 @@
-<% provide(:title, 'Show') %>
+<% provide(:title, t('articles.show.title')) %>
 
-<h1><%= raw RedCloth.new(@article.title).to_html %></h1>
+<h1><%= t 'articles.show.content' %></h1>
 <title><%= yield(:title) %></title>
-<h2> Details about <%= raw RedCloth.new(@article.title).to_html %></h2>
-<ul>
-	<li>Title: <%= raw RedCloth.new(@article.title).to_html %></li>
-</ul>
-<h3> Description:</h3>
-<%= raw RedCloth.new(@article.content).to_html %>
-Posted <%= time_ago_in_words(@article.created_at) %> ago.
-<%= link_to "Edit", edit_article_path(@article) %>
-<%= link_to "Back to list", articles_path %>
-<%= button_to 'Delete', @article, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+<h2><%= t 'articles.title' %><%= (@article.title) %></h2>
+<h3><%= t 'articles.content' %></h3>
+<p><%= raw RedCloth.new(@article.content).to_html %>
+<%= t 'articles.released' %> <%= t(@article.created_at, format: :short) %>.</p>
+<%= link_to t('articles.show.edit'), edit_article_path(@article) %>
+<%= link_to t('articles.show.back'), articles_path %>
+
+<%= button_to t('articles.delete'), @article, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+
+
+
+
+
 
 
 

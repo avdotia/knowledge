@@ -1,0 +1,34 @@
+en:
+  articles:
+    title: "Title "
+    content: "Description "
+    released: "Posted "
+    delete: "Delete"
+    search: "Search"
+    show: 
+      title: "Show"
+      content: "Details"
+      back: "Back to list"
+      edit: "Edit"
+    new:
+      title: "New article"
+      content: "Create a new article"
+      back: "Back to list"
+    edit:
+      title: "Edit article"
+      content: "Update the article"
+      back: "Back to article"
+    index:
+      title: "Index"
+      content: "All articles"
+      new: "Add new article"
+      id_table: "ID"
+      title_table: "Article title"
+      release_table: "Release date"
+      info_table: "More info"
+  success_update_flash: "The article was successfully updated."
+  success_destroy_flash: "The article was succesfully deleted."
+  success_create_flash: "The article was successfully created."
+  error_saving_flash: "There were errors saving the article."
+
+
