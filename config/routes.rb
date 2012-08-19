@@ -17,4 +17,5 @@ Knowledge::Application.routes.draw do
 #match '/edit',  to: 'articles#edit'
 
   match '*dummy', to: 'error#error_404', locale: I18n.default_locale.to_s
+  resources :tags, only: [:create, :destroy]
 end

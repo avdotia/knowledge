@@ -1,5 +1,6 @@
 <%= simple_form_for @article do |f| %>
   <%= f.input :title %>
-  <%= f.input :content, :as => :text %>   
+  <%= f.input :content, :as => :text %>
+  <%= text_field_tag :tags, @tags %> 
   <%= f.button :submit %>
 <% end %>

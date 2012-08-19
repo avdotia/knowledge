@@ -9,6 +9,7 @@ describe Article do
   
   it { should respond_to(:title) }
   it { should respond_to(:content) }
+  it { should respond_to(:tags) }
 #Validate the presence  of attributes' tests
   it { should be_valid }
   describe "when the title is not present" do
@@ -24,5 +25,15 @@ describe Article do
     before { @article.title = "." * 51 }
     it { should_not be_valid }
   end
-  
+#Relationship between articles and tags
+  describe "tags associations" do
+    before { @article.save }
+#    it "should destroy associated tags" do
+#      tags = @article.tags
+#      @article.destroy
+#      tags.each do |tag|
+#        Tag.find_by_id(tag.id).should be_nil
+#      end
+#    end
+  end  
 end

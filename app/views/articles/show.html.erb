@@ -5,6 +5,10 @@
 <h2><%= t 'articles.title' %><%= (@article.title) %></h2>
 <h3><%= t 'articles.content' %></h3>
 <p><%= raw RedCloth.new(@article.content).to_html %>
+<% if @tags.any? %>
+    Tags: <%= @tags.map(&:name).join(', ') %>
+    <br />
+<% end %>
 <%= t 'articles.released' %> <%= t(@article.created_at, format: :short) %>.</p>
 <%= link_to t('articles.show.edit'), edit_article_path(@article) %>
 <%= link_to t('articles.show.back'), articles_path %>
