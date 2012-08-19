@@ -1,0 +1,23 @@
+<% provide(:title, t('tags.title')) %>
+<%= link_to t('articles.new.back'), articles_path %>
+<table>
+  <thead>
+    <tr>
+      <th> <%=  index_table_header t('articles.index.title_table'), :title, @field, @direction %> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <li>        
+      <% @articles.each do |article| %>
+        <tr>
+          <td>
+            <%= link_to article.title, article_path(article) %>
+          </td
+        </tr>
+      <% end %>
+    </li>
+  </tbody>
+</table>
+<div id="back-list">
+<%= link_to t('articles.new.back'), articles_path %>
+</div>

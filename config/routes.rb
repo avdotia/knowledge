@@ -7,7 +7,11 @@ Knowledge::Application.routes.draw do
     #[es, en, fr] => /es|en|fr/
     root to: 'articles#index'
 
-    resources :articles
+    resources :articles do
+      member do
+        get 'filter'
+      end
+    end
     
     match '*dummy', to: 'error#error_404'
   end
@@ -17,5 +21,5 @@ Knowledge::Application.routes.draw do
 #match '/edit',  to: 'articles#edit'
 
   match '*dummy', to: 'error#error_404', locale: I18n.default_locale.to_s
-  resources :tags, only: [:create, :destroy]
+
 end

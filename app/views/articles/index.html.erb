@@ -10,7 +10,7 @@
       <th> <%=  index_table_header t('articles.index.id_table'), :id, @field, @direction %> </th>    
       <th> <%=  index_table_header t('articles.index.title_table'), :title, @field, @direction %> </th>
       <th> <%=  index_table_header t('articles.index.release_table'), :title, @field, @direction %></th>
-      <th> <%= t('articles.index.info_table') %> </th>
+      <th> <%=  t('articles.index.info_table') %> </th>
     </tr>
   </thead>
   <tbody>  
@@ -27,6 +27,9 @@
          <%= time_ago_in_words(article.created_at) %>
        </td>	     
        <td>
+          <% article.tags.each do |tag| %>
+            <%= link_to tag.name, filter_article_path(tag.name) %>   
+          <% end %>
        </td>       
       </tr>
     <% end %>

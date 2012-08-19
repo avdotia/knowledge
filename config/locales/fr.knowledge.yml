@@ -1,8 +1,8 @@
 fr:
   articles:
-    title: "Titre "
-    content: "Resumé "
-    released: "Envoyer "
+    title: "Titre"
+    content: "Resumé"
+    released: "Envoyer"
     delete: "Effacer"  
     search: "Rechercher"  
     show: 
@@ -25,8 +25,12 @@ fr:
       id_table: "ID"
       title_table: "Titre de l'article"
       release_table: "Date"
-      info_table: "Plus d'information"
+      info_table: "Étiquettes"
   success_update_flash: "L'article est mis à jour."
   success_destroy_flash:  "L'article a été supprimé avec succès."
   success_create_flash: "L'article a été créé avec succès."
   error_saving_flash: "Il y avait des erreurs d'épargne de l'article."
+  will_paginate:
+    previous_label: "&#8592; Précédent"
+    next_label: "Suivant &#8594;"
+    page_gap: "&hellip;"

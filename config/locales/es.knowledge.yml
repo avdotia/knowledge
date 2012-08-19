@@ -1,8 +1,8 @@
 es:
   articles:
-    title: "Título "
-    content: "Descripción "
-    released: "Enviado "
+    title: "Título"
+    content: "Descripción"
+    released: "Enviado"
     delete: "Borrar"
     search: "Buscar"
     show: 
@@ -25,8 +25,12 @@ es:
       id_table: "ID"
       title_table: "Título del artículo"
       release_table: "Fecha"
-      info_table: "Más información"    
+      info_table: "Etiquetas"    
   success_update_flash: "El artículo fue actualizado correctamente."
   success_destroy_flash: "El artículo fue borrado con éxito."
   success_create_flash: "El artículo fue creado satisfactoriamente."
   error_saving_flash: "Se produjeron errores guardando el artículo."
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Siguiente &#8594;"
+    page_gap: "&hellip;"

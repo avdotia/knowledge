@@ -1,8 +1,8 @@
 en:
   articles:
-    title: "Title "
-    content: "Description "
-    released: "Posted "
+    title: "Title" 
+    content: "Description"
+    released: "Posted"
     delete: "Delete"
     search: "Search"
     show: 
@@ -25,10 +25,14 @@ en:
       id_table: "ID"
       title_table: "Article title"
       release_table: "Release date"
-      info_table: "More info"
+      info_table: "Tags"
   success_update_flash: "The article was successfully updated."
   success_destroy_flash: "The article was succesfully deleted."
   success_create_flash: "The article was successfully created."
   error_saving_flash: "There were errors saving the article."
+  will_paginate:
+    previous_label: "&#8592; Previous"
+    next_label: "Next &#8594;"
+    page_gap: "&hellip;"
 
 

@@ -7,9 +7,9 @@ describe "Article Pages" do
     before do 
       @article = FactoryGirl.create(:article)
       @tag1 = FactoryGirl.create(:tag, name: "Author")
-      @tag2 = FactoryGirl.create(:tag, name: "Book")
+  #    @tag2 = FactoryGirl.create(:tag, name: "Book")
       @article.tags << @tag1
-      @article.tags << @tag2
+  #    @article.tags << @tag2
       visit article_path(@article, locale: I18n.default_locale)
     end
      
@@ -21,7 +21,7 @@ describe "Article Pages" do
     it { should have_button 'Delete' }  
     describe "tags" do
       it { should have_content(@tag1.name) }
-      it { should have_content(@tag2.name) }
+   #   it { should have_content(@tag2.name) }
 
     end    
   end
@@ -56,6 +56,7 @@ describe "Article Pages" do
   
   describe "edit" do
     let(:article) { FactoryGirl.create(:article) }
+#    let(:tag) { FactoryGirl.create(:tag, name: "hola") }
     before { visit edit_article_path(article, locale: I18n.default_locale) }
     describe "page" do
       it { should have_selector('h1',    content: "Update the article") }
@@ -75,14 +76,17 @@ describe "Article Pages" do
     describe "with valid information" do
       let(:new_title) { "New title" }
       let(:new_content) { "New content" }
+#      let(:new_tag) { "New tag" }
       before do
         fill_in "article_title", with: new_title
         fill_in "article_content", with: new_content
+#        fill_in "tag_name", with: new_tag
         click_button "Update article"
       end
       it {should have_selector('div#flash-notice', text: "The article was successfully updated.")}
       specify { article.reload.title.should == new_title }
-      specify { article.reload.content.should == new_content }           
+      specify { article.reload.content.should == new_content }
+    #  specify { tag.reload.name.should == new_tag }           
     end
   end  
   

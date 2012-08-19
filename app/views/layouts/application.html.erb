@@ -7,11 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id = "flash">	
+<div id="flash">	
   <% flash.each do |type, message| %>
   <div id = "flash-<%= type.to_s %>"><%= message %></div>
   <% end %>
 </div>
+<div id="language">
+	<% I18n.available_locales.each do |locale| %>
+		<% if locale == I18n.locale %>
+			<span id="current-language">
+				<%= I18n.locale.to_s %>
+			</span>
+		<% else %>
+			<%= link_to locale, articles_path(locale: locale) %>
+		<% end %>
+	<% end %>
+</div>	
 <%= yield %>
 
 </body>
