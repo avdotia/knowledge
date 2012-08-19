@@ -19,7 +19,7 @@
 				<%= I18n.locale.to_s %>
 			</span>
 		<% else %>
-			<%= link_to locale, articles_path(locale: locale) %>
+			<%= link_to locale, url_for(locale: locale) %>
 		<% end %>
 	<% end %>
 </div>	

@@ -1,4 +1,5 @@
-<% provide(:title, t('tags.title')) %>
+<% provide :title, @tag.name %>
+<h1><%= @tag.name %></h1>
 <%= link_to t('articles.new.back'), articles_path %>
 <table>
   <thead>

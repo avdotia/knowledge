@@ -2,36 +2,32 @@ require 'spec_helper'
 
 describe "Article Pages" do
   subject { page }
-  describe "show" do
-   
+  
+  describe "show" do   
     before do 
-      @article = FactoryGirl.create(:article)
+      @article = FactoryGirl.create(:article, title: "Moby Dick", content: "The Whale is a novel by Herman Melville, first published in 1851")
       @tag1 = FactoryGirl.create(:tag, name: "Author")
-  #    @tag2 = FactoryGirl.create(:tag, name: "Book")
       @article.tags << @tag1
-  #    @article.tags << @tag2
       visit article_path(@article, locale: I18n.default_locale)
     end
-     
+    it { should have_link('es', href: article_path(@article, locale: :es)) } 
     it { should have_selector('h1') }
     it { should have_selector('title', text: "Show") }
-  #  it { should have_selector('p', text: article.content) }
     it { should have_link('Edit', href: edit_article_path(@article, locale: I18n.default_locale)) }
     it { should have_link('Back to list', href: articles_path(locale: I18n.default_locale)) }
-    it { should have_button 'Delete' }  
-    describe "tags" do
-      it { should have_content(@tag1.name) }
-   #   it { should have_content(@tag2.name) }
-
-    end    
+    it { should have_button 'Delete' } 
+    it { should have_content(@tag1.name) }
+    it { should have_content(@article.title) } 
+    it { should have_content(@article.content) }  
   end
   
   describe "add new article" do
     before { visit new_article_path(locale: I18n.default_locale) }
     describe "page" do
-      it { should have_selector('h1', content: "Create a new article") }
       it { should have_selector('title', text: "New article") }
-      it { should have_link('Back to list', href: articles_path(locale: I18n.default_locale)) }
+      it { should have_link('es', href: new_article_path(locale: :es)) }
+      it { should have_selector('h1', content: "Create a new article") }      
+      it { should have_link('Back to list', href: articles_path(locale: I18n.default_locale)) }      
     end
     describe "with invalid information" do
       [:title, :content].each do |field|
@@ -45,9 +41,11 @@ describe "Article Pages" do
     describe "with valid information" do
       let(:new_title) { "New title" }
       let(:new_content) { "New content" }
+      let(:tag) { FactoryGirl.create(:tag, name: "hola") }
       before do
         fill_in "article_title", with: new_title
         fill_in "article_content", with: new_content
+        fill_in "tags", with: tag.name        
         click_button "Create article"
       end
       it { should have_selector('div#flash-notice', text: "The article was successfully created.") }   
@@ -55,14 +53,20 @@ describe "Article Pages" do
   end
   
   describe "edit" do
-    let(:article) { FactoryGirl.create(:article) }
-#    let(:tag) { FactoryGirl.create(:tag, name: "hola") }
-    before { visit edit_article_path(article, locale: I18n.default_locale) }
+    before do
+      @article = FactoryGirl.create(:article, title: "Moby Dick", content: "The Whale is a novel by Herman Melville, first published in 1851") 
+      @tag = FactoryGirl.create(:tag, name: "Author")
+      @article.tags << @tag
+      visit edit_article_path(@article, locale: I18n.default_locale)
+    end
     describe "page" do
-      it { should have_selector('h1',    content: "Update the article") }
       it { should have_selector('title', text: "Edit article") }
-      it { should have_link('Back to article', href: article_path(article, locale: I18n.default_locale)) } 
-      it { should have_button 'Delete' }       
+      it { should have_link('es', href: edit_article_path(@article, locale: :es)) }
+      it { should have_selector('h1',    content: "Update the article") }
+      it { should have_link('Back to article', href: article_path(@article, locale: I18n.default_locale)) } 
+      it { should have_button 'Delete' }      
+      it { should have_selector("input", value: @article.title) } 
+      it { should have_content(@article.content) }        
     end
     describe "with invalid information" do
       [:title, :content].each do |field|
@@ -74,34 +78,31 @@ describe "Article Pages" do
       end
     end
     describe "with valid information" do
-      let(:new_title) { "New title" }
-      let(:new_content) { "New content" }
-#      let(:new_tag) { "New tag" }
       before do
-        fill_in "article_title", with: new_title
-        fill_in "article_content", with: new_content
-#        fill_in "tag_name", with: new_tag
+        fill_in "article_title", with: @article.title
+        fill_in "article_content", with: @article.content
+        fill_in "tags", with: @tag.name
         click_button "Update article"
       end
       it {should have_selector('div#flash-notice', text: "The article was successfully updated.")}
-      specify { article.reload.title.should == new_title }
-      specify { article.reload.content.should == new_content }
-    #  specify { tag.reload.name.should == new_tag }           
+      specify { @article.reload.title.should == @article.title }
+      specify { @article.reload.content.should == @article.content }
+      specify { @tag.reload.name.should == @tag.name }           
     end
   end  
   
   describe "list articles" do
-    it "has at least an article" do
+    before do
       @article = FactoryGirl.create(:article)
-      visit articles_path(locale: I18n.default_locale)
-      should have_link(@article.title, href: article_path(@article, locale: I18n.default_locale)) 
+      visit articles_path(locale: :en)
     end
-    before { visit articles_path(locale: I18n.default_locale) }
-    let(:article) { FactoryGirl.create(:article) }
+    it "has at least an article" do
+      should have_link(@article.title, href: article_path(@article, locale: :en)) 
+    end
     describe "page" do
-      it { should have_link('Add new article', href: new_article_path(locale: I18n.default_locale)) } 
-      it { should have_selector('h1', text: "All articles") }  
-      it { should have_selector('title', text: "Index") }       
+      it { should have_selector('title', text: "Index") }
+      it { should have_selector('h1', text: "All articles") }
+      it { should have_link('Add new article', href: new_article_path(locale: :en)) }             
     end
     describe "pagination" do
       before(:all) { 30.times { FactoryGirl.create(:article) } }
@@ -113,20 +114,5 @@ describe "Article Pages" do
         end
       end
     end
-##########PARA CREACION
-#    describe "article release associations" do
-
-#      before { @article.save }
-#      let!(:older_article) do 
-#        FactoryGirl.create(:article, created_at: 1.day.ago)
-#      end
-#      let!(:newer_article) do
-#        FactoryGirl.create(:article, created_at: 1.hour.ago)
-#      end
-  
-#      it "should have the right articles in the right order" do
-#        article.should == [newer_article, older_article]
-#      end
-#    end
   end
 end
