@@ -28,9 +28,9 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
   
   gem 'uglifier', '1.2.3'
-  gem 'compass-rails'
 end
 
+gem 'compass-rails'
 
 
 group :test do
