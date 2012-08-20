@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120819173136) do
+ActiveRecord::Schema.define(:version => 20120820003337) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(:version => 20120819173136) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
-    t.text     "content",    :limit => 255
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "articles_tags", :force => true do |t|
