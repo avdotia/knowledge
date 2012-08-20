@@ -5,6 +5,7 @@ es:
     released: "Enviado"
     delete: "Borrar"
     search: "Buscar"
+    untitled: "Sin título"
     show: 
       title: "Ver artículo"
       content: "Detalles"

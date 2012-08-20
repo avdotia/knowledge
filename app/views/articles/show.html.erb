@@ -1,14 +1,20 @@
 <% provide(:title, t('articles.show.title')) %>
 
 <h1><%= t 'articles.show.content' %></h1>
-<h2><%= t 'articles.title' %><%= (@article.title) %></h2>
-<h3><%= t 'articles.content' %></h3>
-<p><%= raw RedCloth.new(@article.content || "").to_html %>
-<% if @tags.any? %>
-    Tags: <%= @tags.map(&:name).join(', ') %>
-    <br />
-<% end %>
-<%= t 'articles.released' %> <%= t(@article.created_at, format: :short) %>.</p>
+<h2><span id='title'><%= t 'articles.title' %>:</span> <%= (@article.title) %></h2>
+<h3><%= t 'articles.content' %>: </h3>
+<div id="contenido">
+	<%= raw RedCloth.new(@article.content || "").to_html %>
+	<div id="tag">
+		<% if @tags.any? %>
+		    <span id="contenido-tag">Tags:</span> <%= @tags.map(&:name).join(', ') %>
+		    <br />
+		<% end %>
+	</div>
+	<div id="publicacion">
+	<%= t 'articles.released' %> <%= t(@article.created_at, format: :short) %>.
+	</div>
+</div>
 <%= link_to t('articles.show.edit'), edit_article_path(@article) %>
 <%= link_to t('articles.show.back'), articles_path %>
 <%= button_to t('articles.delete'), @article, :method => :delete, :data => { :confirm => 'Are you sure?' } %>

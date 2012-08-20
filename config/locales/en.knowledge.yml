@@ -5,6 +5,7 @@ en:
     released: "Posted"
     delete: "Delete"
     search: "Search"
+    untitled: "Untitled"
     show: 
       title: "Show"
       content: "Details"

@@ -21,7 +21,7 @@
          <%= link_to article.id, article_path(article) %>
        </td>
 	     <td>
-	       <%= link_to article.title, article_path(article) %>	       
+	       <%= link_to (article.title|| t('articles.untitled')), article_path(article) %>	       
     	 </td>
        <td>
          <%= time_ago_in_words(article.created_at) %>

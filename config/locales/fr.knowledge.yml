@@ -4,7 +4,8 @@ fr:
     content: "Resumé"
     released: "Envoyer"
     delete: "Effacer"  
-    search: "Rechercher"  
+    search: "Rechercher"
+    untitled: "Sans réserve"
     show: 
       title: "Montrer"
       content: "Détails"  
